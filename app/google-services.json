@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "795793601180",
+    "firebase_url": "https://static-website-form.firebaseio.com",
+    "project_id": "static-website-form",
+    "storage_bucket": "static-website-form.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795793601180:android:2e87dcfebdcffdf393f359",
+        "android_client_info": {
+          "package_name": "com.example.formmessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795793601180-srj336avhnk553jt51ng9ag1lc8pgtuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoCfAaPM2asP3u7a3M1T4nwNDSNsVII94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795793601180-srj336avhnk553jt51ng9ag1lc8pgtuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

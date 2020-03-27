@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Form Message</string>
+    <string name="label_email">Email:</string>
+    <string name="label_subject">Subject:</string>
+    <string name="label_message">Message:</string>
+    <string name="label_date">Date:</string>
+    <string name="title_message">Message</string>
+    <string name="title_delete">Delete</string>
+</resources>
