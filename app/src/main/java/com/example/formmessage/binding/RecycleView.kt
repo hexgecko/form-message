@@ -1,20 +1,27 @@
-package com.example.formmessage
+package com.example.formmessage.binding
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.formmessage.databinding.ActivityMainBinding
 import com.example.formmessage.databinding.ItemMessageBinding
 import com.example.formmessage.model.MessageRecord
-import com.example.formmessage.viewmodel.MainActivityModel
-import android.text.format.DateFormat
+import com.example.formmessage.view.DetailActivity
+
+fun RecyclerView.bindMessageRecordList(owner: AppCompatActivity, list: LiveData<List<MessageRecord>>) {
+    val adapter = MessageRecordAdapter(owner, list.value)
+
+    this.setHasFixedSize(true)
+    this.layoutManager = LinearLayoutManager(owner)
+    this.adapter = adapter
+
+    list.observe(owner, Observer { adapter.updateList(it) })
+}
 
 class MessageRecordAdapter(
     private val activity: AppCompatActivity,
@@ -28,7 +35,10 @@ class MessageRecordAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val binding = ItemMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemHolder(binding.root as ViewGroup, binding)
+        return ItemHolder(
+            binding.root as ViewGroup,
+            binding
+        )
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
@@ -51,29 +61,5 @@ class MessageRecordAdapter(
     fun updateList(newList: List<MessageRecord>) {
         list = newList
         notifyDataSetChanged()
-    }
-}
-
-fun RecyclerView.bindMessageRecordList(owner: AppCompatActivity, list: LiveData<List<MessageRecord>>) {
-
-    val adapter = MessageRecordAdapter(owner, list.value)
-
-    this.setHasFixedSize(true)
-    this.layoutManager = LinearLayoutManager(owner)
-    this.adapter = adapter
-
-    list.observe(owner, Observer { adapter.updateList(it) })
-}
-
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val viewModel = ViewModelProvider(this).get(MainActivityModel::class.java)
-
-        ActivityMainBinding.inflate(layoutInflater).let {
-            it.messageList.bindMessageRecordList(this, viewModel.messageList)
-            setContentView(it.root)
-        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.formmessage
+package com.example.formmessage.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import com.example.formmessage.viewmodel.DetailActivityModel
 import android.text.format.DateFormat
 import android.view.Menu
 import android.view.MenuItem
+import com.example.formmessage.R
 import com.example.formmessage.viewmodel.DetailActivityModelFactory
 
 class DetailActivity: AppCompatActivity() {

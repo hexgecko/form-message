@@ -11,6 +11,6 @@ class MainActivityModel: ViewModel(), KoinComponent {
     private val messageModel by inject<MessageModel>()
 
     val messageList = Transformations.map(messageModel.messageMap) { messageMap ->
-        messageMap.values.sortedBy { it.timestamp }
+        messageMap.values.sortedByDescending { it.timestamp }
     }
 }
